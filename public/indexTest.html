@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styleTest.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="page-title">Employee Directory</h1>
+
+        <!-- Employee Form -->
+        <form id="employee-form" class="employee-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter Employee Name">
+            </div>
+
+            <!-- Designation Dropdown -->
+			<div class="form-group">
+				<label for="designation">Designation:</label>
+				<select id="designation" name="designation" required>
+					<option value="">Select Designation</option>
+					<option value="TOC">TOC</option>
+					<option value="TOD">TOD</option>
+					<option value="TOE">TOE</option>
+					<option value="TOF">TOF</option>
+					<option value="TOG">TOG</option>
+					<option value="WA">WA</option>
+					<option value="Technician">Technician</option>
+					<option value="APO">APO</option>
+				</select>
+			</div>
+
+			<!-- Section/Division Dropdown -->
+			<div class="form-group">
+				<label for="section">Section/Division:</label>
+				<select id="section" name="section" required>
+					<option value="">Select Section/Division</option>
+					<option value="IT">IT</option>
+					<option value="Electrical">Electrical</option>
+					<option value="GSS">GSS</option>
+					<option value="Mechanical">Mechanical</option>
+					<option value="Civil">Civil</option>
+					<option value="Recruitment">Recruitment</option>
+					<option value="Establishment">Establishment</option>
+					<option value="Allotment">Allotment</option>
+					<option value="Salary">Salary</option>
+				</select>
+			</div>
+
+
+            <div class="form-group">
+                <label for="tel-ext">Telephone Extension:</label>
+                <input type="text" id="tel-ext" name="tel-ext" required placeholder="Enter Extension Number">
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+
+        <!-- Employee Table -->
+        <h2 class="table-title">Employee Directory Table</h2>
+        <table id="employee-table" class="employee-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Telephone Extension</th>
+                    <th>Section</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Employee data will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DCSEM IT Section, All rights reserved</p>
+    </footer>
+
+    <script src="scriptTest.js"></script>
+</body>
+
+</html>

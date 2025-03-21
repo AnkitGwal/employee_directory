@@ -39,6 +39,12 @@ document.getElementById('employee-form').addEventListener('submit', async (e) =>
   const telExt = document.getElementById('tel-ext').value;
   const section = document.getElementById('section').value;
 
+  // Ensure all fields are filled
+  if (!name || !designation || !telExt || !section) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
   try {
     // Send POST request to backend to save the employee data
     const response = await fetch('http://127.0.0.1:3000/submitEmployeeData', {
