@@ -12,7 +12,14 @@
 <body>
 
     <div class="container">
-        <h1 class="page-title">Employee Directory</h1>
+        <!-- Logo -->
+        <div class="left-logo-container">
+            <img src="D:\ankit\EmployeeDirectory\images\logo.png" alt="Logo" class="logo">
+        </div>
+		 <div class="right-logo-container">
+            <img src="D:\ankit\EmployeeDirectory\images\logo.png" alt="Logo" class="logo">
+        </div>
+        <h1 class="page-title">Employee Telephone Directory</h1>
 
         <!-- Employee Form -->
         <form id="employee-form" class="employee-form">
@@ -21,9 +28,37 @@
                 <input type="text" id="name" name="name" required placeholder="Enter Employee Name">
             </div>
 
+            <!-- Designation Dropdown -->
             <div class="form-group">
                 <label for="designation">Designation:</label>
-                <input type="text" id="designation" name="designation" required placeholder="Enter Designation">
+                <select id="designation" name="designation" required>
+                    <option value="">Select Designation</option>
+                    <option value="TOC">TOC</option>
+                    <option value="TOD">TOD</option>
+                    <option value="TOE">TOE</option>
+                    <option value="TOF">TOF</option>
+                    <option value="TOG">TOG</option>
+                    <option value="WA">WA</option>
+                    <option value="Technician">Technician</option>
+                    <option value="APO">APO</option>
+                </select>
+            </div>
+
+            <!-- Section/Division Dropdown -->
+            <div class="form-group">
+                <label for="section">Section/Division:</label>
+                <select id="section" name="section" required>
+                    <option value="">Select Section/Division</option>
+                    <option value="IT">IT</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="GSS">GSS</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Recruitment">Recruitment</option>
+                    <option value="Establishment">Establishment</option>
+                    <option value="Allotment">Allotment</option>
+                    <option value="Salary">Salary</option>
+                </select>
             </div>
 
             <div class="form-group">
@@ -31,40 +66,42 @@
                 <input type="text" id="tel-ext" name="tel-ext" required placeholder="Enter Extension Number">
             </div>
 
-            <div class="form-group">
-                <label for="section">Section/Division:</label>
-                <input type="text" id="section" name="section" required placeholder="Enter Section/Division">
-            </div>
-
             <button type="submit" class="submit-button">Submit</button>
         </form>
 
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="search-bar" class="search-bar" placeholder="Search Employees" oninput="filterEmployees()">
+        <div class="section-filter">
+            <label for="filter-section">Filter by Section/Division:</label>
+            <select id="filter-section" name="filter-section">
+                <option value="">Select Section/Division</option>
+                <option value="IT">IT</option>
+                <option value="Electrical">Electrical</option>
+                <option value="GSS">GSS</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+                <option value="Recruitment">Recruitment</option>
+                <option value="Establishment">Establishment</option>
+                <option value="Allotment">Allotment</option>
+                <option value="Salary">Salary</option>
+            </select>
         </div>
 
-        <!-- Employee List -->
-        <h2 class="list-title">Employee List</h2>
-        <div id="employee-list" class="employee-list"></div>
-		<!-- Employee Table -->
-		<h2 class="table-title">Employee Directory Table</h2>
-		<table id="employee-table" class="employee-table">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Designation</th>
-					<th>Telephone Extension</th>
-					<th>Section</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!-- Employee data will be dynamically added here -->
-			</tbody>
-		</table>
+        <!-- Employee Table -->
+        <h2 class="table-title">Employee Directory Table</h2>
+        <table id="employee-table" class="employee-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Telephone Extension</th>
+                    <th>Section</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Employee data will be dynamically added here -->
+            </tbody>
+        </table>
     </div>
 
-    <!-- Footer with Copyright -->
     <footer>
         <p>&copy; 2025 DCSEM IT Section, All rights reserved</p>
     </footer>

@@ -6,9 +6,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const db = mysql.createConnection({
-  host: '127.0.0.1',  // Ensure this is correct
+  host: '127.0.0.1',
   user: 'root',
-  password: 'Ankit@1207#', // Ensure this is correct
+  password: 'Ankit@1207#',
   database: 'employee_directory'
 });
 
@@ -16,14 +16,14 @@ const db = mysql.createConnection({
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to MariaDB:', err.stack);
-    process.exit(1); // Exit the process if database connection fails
+    process.exit(1);
   }
   console.log('Connected to MariaDB as id ' + db.threadId);
 });
 
 // Middleware
-app.use(cors()); // Allow CORS requests
-app.use(bodyParser.json()); // Parse JSON bodies
+app.use(cors());
+app.use(bodyParser.json());
 
 // POST endpoint to submit employee data
 app.post('/submitEmployeeData', (req, res) => {
@@ -34,7 +34,7 @@ app.post('/submitEmployeeData', (req, res) => {
   }
 
   const query = 'INSERT INTO employees (name, designation, telExt, section) VALUES (?, ?, ?, ?)';
-  
+
   db.query(query, [name, designation, telExt, section], (err, result) => {
     if (err) {
       console.error('Error inserting data:', err);
@@ -44,7 +44,6 @@ app.post('/submitEmployeeData', (req, res) => {
     res.status(201).json({ message: 'Employee data saved successfully!' });
   });
 });
-
 
 // GET endpoint to retrieve all employees from the database
 app.get('/getEmployees', (req, res) => {
@@ -56,10 +55,24 @@ app.get('/getEmployees', (req, res) => {
       return res.status(500).send('Error fetching employees.');
     }
 
-    res.json(results); // Send the employee data to the client
+    res.json(results);
   });
 });
 
+// GET endpoint to retrieve employees filtered by section
+app.get('/getEmployeesBySection', (req, res) => {
+  const { section } = req.query;
+  const query = 'SELECT * FROM employees WHERE section = ?';
+
+  db.query(query, [section], (err, results) => {
+    if (err) {
+      console.error('Error retrieving employees by section:', err);
+      return res.status(500).send('Error fetching employees.');
+    }
+
+    res.json(results);
+  });
+});
 
 // Start the server
 app.listen(PORT, () => {
