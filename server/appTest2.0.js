@@ -5,6 +5,7 @@ const mysql = require('mysql2');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Database connection
 const db = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
@@ -12,7 +13,7 @@ const db = mysql.createConnection({
   database: 'emp_directory'
 });
 
-// Test the connection to MariaDB
+// Test the connection
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to MariaDB:', err.stack);
@@ -25,17 +26,20 @@ db.connect((err) => {
 app.use(cors());
 app.use(bodyParser.json());
 
-// POST endpoint to submit employee data
+// POST: Add new employee
 app.post('/submitEmployeeData', (req, res) => {
-  const { name, finalDesignation, telExt, finalSection, email, roomLocation } = req.body;
+  const { name, designation, telExt, section, email, roomLocation } = req.body;
 
-  if (!name || !finalDesignation  || !telExt || !finalSection || !email || !roomLocation) {
+  if (!name || !designation || !telExt || !section || !email || !roomLocation) {
     return res.status(400).send('All fields are required.');
   }
 
-  const query = 'INSERT INTO employees (name, finalDesignation, telExt, finalSection, email, roomLocation) VALUES (?, ?, ?, ?, ?, ?)';
+  const query = `
+    INSERT INTO employees (name, designation, telExt, section, email, roomLocation)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
 
-  db.query(query, [name, finalDesignation, telExt, finalSection, email, roomLocation], (err, result) => {
+  db.query(query, [name, designation, telExt, section, email, roomLocation], (err, result) => {
     if (err) {
       console.error('Error inserting data:', err);
       return res.status(500).send('Error saving data to the database.');
@@ -45,7 +49,7 @@ app.post('/submitEmployeeData', (req, res) => {
   });
 });
 
-// GET endpoint to retrieve all employees from the database
+// GET: All employees
 app.get('/getEmployees', (req, res) => {
   const query = 'SELECT * FROM employees';
 
@@ -59,7 +63,7 @@ app.get('/getEmployees', (req, res) => {
   });
 });
 
-// GET endpoint to retrieve employees filtered by section
+// GET: Employees by section
 app.get('/getEmployeesBySection', (req, res) => {
   const { section } = req.query;
   const query = 'SELECT * FROM employees WHERE section = ?';
@@ -74,9 +78,9 @@ app.get('/getEmployeesBySection', (req, res) => {
   });
 });
 
-
-app.delete('/deleteEmployee/:id', (req, res) => {
-  const { emp_id } = req.params;
+// DELETE: Remove employee
+app.delete('/deleteEmployee/:emp_id', (req, res) => {
+  const emp_id = req.params.emp_id;
   const query = 'DELETE FROM employees WHERE emp_id = ?';
 
   db.query(query, [emp_id], (err, result) => {
@@ -89,7 +93,32 @@ app.delete('/deleteEmployee/:id', (req, res) => {
   });
 });
 
-// Start the server
+// PUT: Update employee
+app.put('/updateEmployee/:emp_id', (req, res) => {
+  const emp_id = req.params.emp_id;
+  const { name, designation, telExt, section, email, roomLocation } = req.body;
+
+  if (!name || !designation || !telExt || !section || !email || !roomLocation) {
+    return res.status(400).send('All fields are required.');
+  }
+
+  const query = `
+    UPDATE employees
+    SET name = ?, designation = ?, telExt = ?, section = ?, email = ?, roomLocation = ?
+    WHERE emp_id = ?
+  `;
+
+  db.query(query, [name, designation, telExt, section, email, roomLocation, emp_id], (err, result) => {
+    if (err) {
+      console.error('Error updating employee:', err);
+      return res.status(500).send('Error updating employee.');
+    }
+
+    res.status(200).json({ message: 'Employee updated successfully' });
+  });
+});
+
+// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
