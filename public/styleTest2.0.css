@@ -1,0 +1,406 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Gradient Background */
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 60px 0;
+    overflow-x: hidden;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Header Styling */
+.page-title {
+    font-size: 50px;
+    color: #2f3640;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Form Styling */
+.employee-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Form Field Styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+input:focus {
+    border-color: #6a82fb;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 6px 25px rgba(106, 130, 251, 0.3);
+}
+
+/* Submit Button Styling */
+.submit-button {
+    grid-column: span 2;
+    padding: 18px 30px;
+    font-size: 20px;
+    background: linear-gradient(145deg, #6a82fb, #fc5c7d);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.submit-button:hover {
+    background: linear-gradient(145deg, #fc5c7d, #6a82fb);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:active {
+    background: linear-gradient(145deg, #6a82fb, #fc5c7d);
+    transform: translateY(2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Employee List Styling */
+.list-title {
+    font-size: 32px;
+    color: #2f3640;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Employee Cards */
+.employee-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.employee-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.employee-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+}
+
+.employee-card h3 {
+    font-size: 24px;
+    color: #2f3640;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.employee-card p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Same gradient as the body */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .employee-form {
+        grid-template-columns: 1fr;
+    }
+
+    .submit-button {
+        grid-column: span 1;
+    }
+
+    .employee-list {
+        flex-direction: column;
+    }
+}
+/* Search Bar Styling */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.search-bar {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #6a82fb;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(106, 130, 251, 0.3);
+}
+/* Table Styling */
+.employee-table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table th, .employee-table td {
+    padding: 12px 18px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.employee-table th {
+    background-color: #6a82fb;
+    color: white;
+    font-weight: 700;
+}
+
+.employee-table td {
+    background-color: #f8f9fa;
+}
+
+.employee-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* Table title */
+.table-title {
+    font-size: 32px;
+    color: #2f3640;
+    margin-top: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Form Field Styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+input, select {
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus {
+    border-color: #6a82fb;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 6px 25px rgba(106, 130, 251, 0.3);
+}
+
+/* Add custom styling for dropdown to ensure consistency */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23ccc" d="M2 3l3 3 3-3z"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+/* Submit Button Styling */
+.submit-button {
+    grid-column: span 2;
+    padding: 18px 30px;
+    font-size: 20px;
+    background: linear-gradient(145deg, #6a82fb, #fc5c7d);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.submit-button:hover {
+    background: linear-gradient(145deg, #fc5c7d, #6a82fb);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:active {
+    background: linear-gradient(145deg, #6a82fb, #fc5c7d);
+    transform: translateY(2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+/* Add styles for the new section filter dropdown */
+.section-filter {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end; /* Align the dropdown to the right */
+}
+
+.section-filter label {
+    margin-right: 10px;
+	margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.section-filter select {
+    padding: 15px;
+    font-size: 16px;
+    width: 250px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section-filter select:focus {
+    border-color: #6a82fb;
+    outline: none;
+    box-shadow: 0 6px 25px rgba(106, 130, 251, 0.3);
+}
+
+
+/* Left Logo Styling */
+.left-logo-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.left-logo-container .logo {
+    width: 100px;
+    height: auto;
+}
+
+/* Right Logo Styling */
+.right-logo-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.right-logo-container .logo{
+    width: 100px;
+    height: auto;
+}
+
+/* Add new styling for buttons in the Actions column */
+.employee-table td .action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.employee-table td .action-buttons button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #6a82fb;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.employee-table td .action-buttons button:hover {
+    background-color: #fc5c7d;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.employee-table td .action-buttons button:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
